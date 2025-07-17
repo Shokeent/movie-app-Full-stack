@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie App - Delete Movies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .movie {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+        }
+        .movie h3 {
+            margin: 0 0 10px 0;
+            color: #007bff;
+        }
+        .movie-info {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 5px;
+        }
+        .info-item {
+            font-weight: bold;
+        }
+        .rating {
+            background-color: #28a745;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+        .nav {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .nav a {
+            text-decoration: none;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .nav a:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #f5c6cb;
+        }
+        .action-info {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Movies by Rating</h1>
+        
+        <div class="nav">
+            <a href="/">Home</a>
+            <a href="/update">Update Rating</a>
+            <a href="/delete">Delete Movies</a>
+        </div>
+
+        <div class="action-info">
+            <h3>Action Performed:</h3>
+            <p>Deleted all movies with "R" rating using the deleteMoviesByRating() function with deleteMany().</p>
+            <p><strong>Function:</strong> deleteMoviesByRating("R")</p>
+        </div>
+
+        <% if (message) { %>
+            <div class="message">
+                <%= message %>
+            </div>
+        <% } %>
+
+        <h2>Remaining Movies:</h2>
+        <% if (movies.length > 0) { %>
+            <% movies.forEach(movie => { %>
+                <div class="movie">
+                    <h3><%= movie.title %></h3>
+                    <div class="movie-info">
+                        <div class="info-item">Year: <%= movie.year %></div>
+                        <div class="info-item">Rating: <span class="rating"><%= movie.rating %></span></div>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <div class="no-movies">
+                <h3>No movies found in the collection.</h3>
+                <p>All movies have been deleted!</p>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>
